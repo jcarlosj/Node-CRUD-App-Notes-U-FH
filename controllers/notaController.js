@@ -5,7 +5,7 @@ let notas = Array();
 /** Create */
 const crearNota = ( descripcion ) => {
 
-    notas = DB .getNotas();
+    notas = getListadoNotas();
     
     /** Nuevo Objeto Tarea */
     let tarea = {
@@ -19,8 +19,12 @@ const crearNota = ( descripcion ) => {
     return notas;
 }
 
-
+/** Obtener el listado de notas */
+const getListadoNotas = () => {
+    return DB .getNotas();
+}
 
 module .exports = {
-    crearNota
+    crearNota,
+    getListadoNotas
 }

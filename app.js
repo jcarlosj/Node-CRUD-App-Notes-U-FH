@@ -1,4 +1,5 @@
-const argv = require( './config/yargs' ) .argv,
+const colors = require( 'colors' ),
+      argv = require( './config/yargs' ) .argv,
       notas = require( './controllers/notaController' ),  
       comando = argv ._[ 0 ];          /** Obtengo el comando escrito en la linea de comandos */
 
@@ -11,7 +12,18 @@ switch( comando ) {
         console .log( ' > Crea nota \n', tarea );
         break;
     case 'listar':
-        console .log( 'Listar Notas' );
+        console .log( 'Listar Notas' .blue );
+        console .log( '-------------------------------' .blue );
+
+        let tareas = notas .getListadoNotas();
+
+        for( const tarea of tareas ) {
+            console .group( ' > ', tarea .descripcion );
+            console .log( '  Estado: ', tarea .completado );
+            console .groupEnd();
+            console .log( '-------------------------------' .blue );
+        }
+
         break;
     case 'actualizar':
         console .log( 'Actualizar Nota' );
