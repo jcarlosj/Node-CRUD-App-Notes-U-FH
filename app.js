@@ -1,5 +1,5 @@
-const argv = require( 'yargs' ) .argv,
-      comando = argv . _[ 0 ];          /** Obtengo el comando escrito en la linea de comandos */
+const argv = require( './config/yargs' ) .argv,
+      comando = argv ._[ 0 ];          /** Obtengo el comando escrito en la linea de comandos */
 
 console .log( argv );
 
