@@ -26,7 +26,8 @@ switch( comando ) {
 
         break;
     case 'actualizar':
-        console .log( 'Actualizar Nota' );
+        let actualizada = notas .actualizarNota( argv .descripcion, argv .completado );
+        console .log( actualizada ? 'Nota Actualizada con éxito' : 'No se ha podido actualizar' );
         break;    
     default:
         console .log( 'Comando no encontrado' );
