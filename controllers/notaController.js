@@ -1,6 +1,7 @@
 const DB = require( '../models/notaModel' );
 
-let notas = Array();
+let notas = Array(),
+    index;
 
 /** Create: Crear Nota */
 const crearNota = ( descripcion ) => {
@@ -26,7 +27,6 @@ const getListadoNotas = () => {
 
 /** Update: Actualizar Nota */
 const actualizarNota = ( descripcion, completado = true ) => {
-    let index;
 
     notas = getListadoNotas();
 
@@ -44,8 +44,26 @@ const actualizarNota = ( descripcion, completado = true ) => {
     }
 }
 
+/** Delete: Eliminar Nota */
+const eliminarNota = ( descripcion ) => {
+
+    notas = getListadoNotas();
+
+    nuevaListaNotas = notas .filter( tarea => {    /** filter(): Crea un nuevo array con todos los elementos que cumplan la condición. */
+        return tarea .descripcion !== descripcion;
+    });
+
+    if( notas .length > nuevaListaNotas .length ) {
+        DB .guardar( nuevaListaNotas );   /** Guarda las notas en un archivo */
+        return true;
+    }
+
+    return false;
+}
+
 module .exports = {
     crearNota,
     getListadoNotas,
-    actualizarNota
+    actualizarNota,
+    eliminarNota
 }

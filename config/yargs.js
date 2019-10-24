@@ -16,9 +16,13 @@ const
             desc: 'Estado de la tarea registrada en la nota'
         }
     },
+    opt_eliminar = {
+        descripcion        /** Configuración genérica */
+    },
     argv = require( 'yargs' ) 
         .command( 'crear', 'Crea una nota', opt_crear )
         .command( 'actualizar', 'Actualiza estado completado de una nota', opt_actualizar )
+        .command( 'borrar', 'Elimina una nota', opt_eliminar )
         .help()
         .argv;
 

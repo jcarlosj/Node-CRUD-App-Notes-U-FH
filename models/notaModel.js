@@ -1,4 +1,5 @@
-const fs = require( 'fs' );
+const fs = require( 'fs' ),
+      colors = require( 'colors' );
 
 /** Create */
 const guardar = ( notas ) => {
@@ -9,7 +10,7 @@ const guardar = ( notas ) => {
         console .log( ' > Lista', data );
 
         if ( err ) throw new Error( ' > No se pudo guardar los cambios', err );
-        else console .log( ' ! Los cambios se han guardado exitosamente' );
+        else console .log( ' ! Los cambios se han guardado exitosamente' .bgGreen .white .bold );
     });    
 }
 

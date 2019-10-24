@@ -27,8 +27,12 @@ switch( comando ) {
         break;
     case 'actualizar':
         let actualizada = notas .actualizarNota( argv .descripcion, argv .completado );
-        console .log( actualizada ? 'Nota Actualizada con éxito' : 'No se ha podido actualizar' );
+        console .log( actualizada ? 'Nota Actualizada con éxito' .bgGreen .white .bold : 'No se ha podido actualizar' .bgRed .white .bold );
         break;    
+    case 'borrar':
+        let borrada = notas .eliminarNota( argv .descripcion );
+        console .log( borrada ? 'Nota Eliminada con éxito' .bgGreen .white .bold : 'No se ha podido eliminar' .bgRed .white .bold );
+        break;
     default:
         console .log( 'Comando no encontrado' );
         break;
