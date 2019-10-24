@@ -1,5 +1,6 @@
 const fs = require( 'fs' );
 
+/** Create */
 const guardar = ( notas ) => {
     let data = JSON .stringify( notas );
 
@@ -12,6 +13,19 @@ const guardar = ( notas ) => {
     });    
 }
 
+/** Read */
+const getNotas = () => {
+    try {
+        notas = require( '../db/data.json' );
+    }
+    catch( error ) {
+        notas = [];     /** Garantiza que siempre habrá un array y no generará error la lectura del archivo "vacio" */
+    }
+
+    return notas;
+}
+
 module .exports = {
-    guardar
+    guardar,
+    getNotas
 }

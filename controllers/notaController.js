@@ -2,7 +2,11 @@ const DB = require( '../models/notaModel' );
 
 let notas = Array();
 
-const crear = ( descripcion ) => {
+/** Create */
+const crearNota = ( descripcion ) => {
+
+    notas = DB .getNotas();
+    
     /** Nuevo Objeto Tarea */
     let tarea = {
         descripcion,
@@ -12,9 +16,11 @@ const crear = ( descripcion ) => {
     notas .push( tarea );   /** Guarda la tarea en el Array */
     DB .guardar( notas );   /** Guarda las notas en un archivo */
 
-    return tarea;
+    return notas;
 }
 
+
+
 module .exports = {
-    crear
+    crearNota
 }

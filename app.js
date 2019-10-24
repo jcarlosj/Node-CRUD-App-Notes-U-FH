@@ -7,7 +7,7 @@ console .log( argv );
 /** Separamos la ejecución de cada uno de los comandos disponibles */
 switch( comando ) {
     case 'crear':
-        let tarea = notas .crear( argv .descripcion );
+        let tarea = notas .crearNota( argv .descripcion );
         console .log( ' > Crea nota \n', tarea );
         break;
     case 'listar':
