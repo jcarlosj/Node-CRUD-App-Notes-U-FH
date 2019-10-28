@@ -30,18 +30,28 @@ const actualizarNota = ( descripcion, completado = true ) => {
 
     notas = getListadoNotas();
 
-    index = notas .findIndex( tarea => {    /** findIndex(): Devuelve el índice del primer elemento de un array que cumpla con la condición. En caso contrario devuelve -1. */
-        return tarea .descripcion === descripcion;
-    });
+    try {
+        completado = eval( completado );
+    }
+    catch( error ) {
+        console .log( 'La opción pasada no existe' .bgRed .white );
+    }
+    
+    /** Valida que la opción del comando esté entre las disponibles */
+    if( completado === true || completado === false )  {
 
-    if( index >= 0 ) {
-        notas[ index ] .completado = completado;    /** Cambia el valor de la propiedad */
-        DB .guardar( notas );   /** Guarda las notas en un archivo */
-        return true;
+        index = notas .findIndex( tarea => {    /** findIndex(): Devuelve el índice del primer elemento de un array que cumpla con la condición. En caso contrario devuelve -1. */
+            return tarea .descripcion === descripcion;
+        });
+    
+        if( index >= 0 ) {
+            notas[ index ] .completado = completado;    /** Cambia el valor de la propiedad */
+            DB .guardar( notas );   /** Guarda las notas en un archivo */
+            return true;
+        }     
     }
-    else {
-        return false;
-    }
+
+    return false;
 }
 
 /** Delete: Eliminar Nota */
