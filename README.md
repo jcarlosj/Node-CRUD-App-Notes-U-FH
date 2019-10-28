@@ -34,6 +34,27 @@ Para listar todas las notas que falta por completar
 node app listar -m false
 ```
 
+#### Actualizar estado de la nota
+Con el siguiente comando se actualiza el estado del registro. Es decir, se ha completado o no
+
+Actualiza el estado del registro a completado
+
+```
+node app actualizar -d "<tarea> -c"
+```
+
+o
+
+```
+node app actualizar -d "<tarea>" -c true
+```
+
+Actualiza el estado del registro a sin completar
+
+```
+node app actualizar -d "<tarea>" -c false
+```
+
 #### Borrar Registro
 Con el siguiente comando se eliminan registros
 
