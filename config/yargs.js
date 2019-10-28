@@ -10,8 +10,15 @@ const
         default: true,   /** Valor por defecto en caso de no ser proporcionado */
         desc: 'Estado de la tarea registrada en la nota'
     },
+    mostrar = {
+        alias: 'm',
+        default: undefined
+    },
     opt_crear = {
         descripcion      /** Configuración genérica */
+    },
+    opt_listar = {
+        mostrar
     },
     opt_actualizar = {
         descripcion,        /** Configuración genérica */
@@ -22,6 +29,7 @@ const
     },
     argv = require( 'yargs' ) 
         .command( 'crear', 'Crea una nota', opt_crear )
+        .command( 'listar', 'Lista notas registradas', opt_listar )
         .command( 'actualizar', 'Actualiza estado completado de una nota', opt_actualizar )
         .command( 'borrar', 'Elimina una nota', opt_eliminar )
         .help()

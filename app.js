@@ -15,7 +15,7 @@ switch( comando ) {
         console .log( 'Listar Notas' .blue );
         console .log( '-------------------------------' .blue );
 
-        let tareas = notas .getListadoNotas();
+        let tareas = notas .getListadoNotas( argv .mostrar );
 
         for( const tarea of tareas ) {
             console .group( ' > ', tarea .descripcion );

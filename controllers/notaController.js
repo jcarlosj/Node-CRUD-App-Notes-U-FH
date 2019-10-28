@@ -21,8 +21,21 @@ const crearNota = ( descripcion ) => {
 }
 
 /** Read: Obtener el listado de notas */
-const getListadoNotas = () => {
-    return DB .getNotas();
+const getListadoNotas = ( mostrar ) => {
+
+    data = DB .getNotas();
+    
+    /** Valida que la opción del comando esté entre las disponibles */
+    if( typeof eval( mostrar ) === "boolean" ){
+
+        mostrar = eval( mostrar );        /** Transforma cadena de texto a comando valido JavaScript en este caso la cadena 'true' o 'false' */
+
+        data = data .filter( tarea => {    /** filter(): Crea un nuevo array con todos los elementos que cumplan la condición. */
+            return tarea .completado === mostrar;
+        });
+    }
+    
+    return data;
 }
 
 /** Update: Actualizar Nota */
@@ -31,7 +44,7 @@ const actualizarNota = ( descripcion, completado = true ) => {
     notas = getListadoNotas();
 
     try {
-        completado = eval( completado );
+        completado = eval( completado );        /** Transforma cadena de texto a comando valido JavaScript en este caso la cadena 'true' o 'false' */
     }
     catch( error ) {
         console .log( 'La opción pasada no existe' .bgRed .white );
